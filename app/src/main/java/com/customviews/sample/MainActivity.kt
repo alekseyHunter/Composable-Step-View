@@ -82,7 +82,7 @@ class MainActivity : ComponentActivity() {
                                     R.drawable.ic_home,
                                     false,
                                     emptyList(),
-                                    Color(0xFF3B9681)
+                                    Color(0xFF53926D)
                                 )
                             ),
                             itemDescriptionStyle = TextStyle(fontSize = 12.sp),

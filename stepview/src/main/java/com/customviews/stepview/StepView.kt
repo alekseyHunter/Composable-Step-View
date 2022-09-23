@@ -288,7 +288,7 @@ private fun ShowPreviewOrderList() {
                         "Создан",
                         "Санкт-Петербург",
                         "13.03.2022",
-                        R.drawable.ic_home_work,
+                        R.drawable.ic_arrow_down,
                         false,
                         emptyList(),
                         color = Color(0xFFCDBC54)
@@ -298,7 +298,7 @@ private fun ShowPreviewOrderList() {
                         "В пути",
                         "Екатеренбург / Отправлен в пункт выдачи",
                         "14.03.2022",
-                        R.drawable.ic_car,
+                        R.drawable.ic_arrow_down,
                         false,
                         listOf(
                             SubStepItem("Санкт-Петербург", "Принят на доставку", "13.03.2022"),
@@ -316,7 +316,7 @@ private fun ShowPreviewOrderList() {
                         "Готов к выдаче",
                         "Челябинск / Поступил. Заберите заказ",
                         "15.03.2022",
-                        R.drawable.ic_person,
+                        R.drawable.ic_arrow_down,
                         false,
                         listOf(SubStepItem("Челябинск", "Поступил. Заберите заказ", "15.03.2022")),
                         Color(0xFF3B9681)
@@ -326,10 +326,10 @@ private fun ShowPreviewOrderList() {
                         "Вручен",
                         "Челябинск",
                         "15.03.2022",
-                        R.drawable.ic_home,
+                        R.drawable.ic_arrow_down,
                         false,
                         emptyList(),
-                        Color(0xFF3B9681)
+                        Color(0xFF53926D)
                     )
                 ),
                 itemDescriptionStyle = TextStyle(fontSize = 12.sp),
