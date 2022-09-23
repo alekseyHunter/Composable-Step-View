@@ -8,7 +8,6 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -21,14 +20,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.customviews.sample.R
 import com.customviews.stepview.models.StepItem
 import com.customviews.stepview.models.StepItemType
-import com.customviews.stepview.models.SubStepItem
 import com.customviews.stepview.utils.changeLightness
 
 @Composable
@@ -268,73 +264,5 @@ private fun StepItem(
         }
 
         Spacer(modifier = Modifier.height(8.dp))
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun ShowPreviewOrderList() {
-    MaterialTheme {
-        Column(
-            Modifier
-                .fillMaxSize()
-                .background(Color.White)
-        ) {
-            StepView(
-                Modifier.fillMaxSize(),
-                listOf(
-                    StepItem(
-                        0,
-                        "Создан",
-                        "Санкт-Петербург",
-                        "13.03.2022",
-                        R.drawable.ic_arrow_down,
-                        false,
-                        emptyList(),
-                        color = Color(0xFFCDBC54)
-                    ),
-                    StepItem(
-                        0,
-                        "В пути",
-                        "Екатеренбург / Отправлен в пункт выдачи",
-                        "14.03.2022",
-                        R.drawable.ic_arrow_down,
-                        false,
-                        listOf(
-                            SubStepItem("Санкт-Петербург", "Принят на доставку", "13.03.2022"),
-                            SubStepItem(
-                                "Санкт-Петербург",
-                                "Отправлен в г. Екатеренбург",
-                                "13.03.2022"
-                            ),
-                            SubStepItem("Екатеренбург", "Отправлен в пункт выдачи", "14.03.2022"),
-                        ),
-                        Color(0xFFCB9B5B)
-                    ),
-                    StepItem(
-                        0,
-                        "Готов к выдаче",
-                        "Челябинск / Поступил. Заберите заказ",
-                        "15.03.2022",
-                        R.drawable.ic_arrow_down,
-                        false,
-                        listOf(SubStepItem("Челябинск", "Поступил. Заберите заказ", "15.03.2022")),
-                        Color(0xFF3B9681)
-                    ),
-                    StepItem(
-                        0,
-                        "Вручен",
-                        "Челябинск",
-                        "15.03.2022",
-                        R.drawable.ic_arrow_down,
-                        false,
-                        emptyList(),
-                        Color(0xFF53926D)
-                    )
-                ),
-                itemDescriptionStyle = TextStyle(fontSize = 12.sp),
-                itemTitleStyle = TextStyle.Default
-            )
-        }
     }
 }
