@@ -8,10 +8,9 @@ data class StepItem(
     val name: String,
     val description: String,
     val mark: String,
-    @DrawableRes val icon: Int,
-    val isActive: Boolean,
-    val subSteps: List<SubStepItem>,
-    val color: Color
+    val indicator: StepIndicator,
+    val isVisibleSubStepIndicator: Boolean,
+    val subSteps: List<SubStepItem>
 )
 
 data class SubStepItem(
@@ -19,3 +18,23 @@ data class SubStepItem(
     val description: String,
     val mark: String
 )
+
+sealed class StepIndicator(
+    open val contentColor: Color,
+    open val backgroundColor: Color,
+    open val lineColor: Color
+) {
+    data class Number(
+        val value: String,
+        override val contentColor: Color = Color.Unspecified,
+        override val backgroundColor: Color = Color.Unspecified,
+        override val lineColor: Color = Color.Unspecified
+    ) : StepIndicator(contentColor, backgroundColor, lineColor)
+
+    data class Icon(
+        @DrawableRes val icon: Int,
+        override val contentColor: Color = Color.Unspecified,
+        override val backgroundColor: Color = Color.Unspecified,
+        override val lineColor: Color = Color.Unspecified
+    ) : StepIndicator(contentColor, backgroundColor, lineColor)
+}
