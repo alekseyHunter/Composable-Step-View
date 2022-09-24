@@ -13,7 +13,7 @@
   <td>Basic</td><td>Custom</td>
  </tr>
  <tr>
-  <td><img src="docs/steplist/Basic.png" width="30%"></td><td><img src="docs/steplist/Custom.png" width="30%"></td>
+  <td><img src="docs/steplist/Basic.png" width="50%"></td><td><img src="docs/steplist/Custom.png" width="50%"></td>
  </tr>
 </table>
 
