@@ -17,9 +17,12 @@ import androidx.compose.ui.unit.sp
 import com.customviews.app.R
 import com.customviews.sample.ui.theme.CustomViewsTheme
 import com.customviews.stepview.StepList
+import com.customviews.stepview.StepListColors
+import com.customviews.stepview.StepListDefault
 import com.customviews.stepview.models.StepIndicator
 import com.customviews.stepview.models.StepItem
 import com.customviews.stepview.models.SubStepItem
+import com.customviews.stepview.utils.changeLightness
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -175,7 +178,11 @@ fun List() {
             ),
             itemTitleStyle = TextStyle.Default,
             itemDescriptionStyle = TextStyle(fontSize = 12.sp),
-            itemMarkStyle = TextStyle(fontSize = 12.sp)
+            itemMarkStyle = TextStyle(fontSize = 12.sp),
+            colors = StepListDefault.stepListColors(
+                descriptionColor = Color.Gray,
+
+            )
         )*/
     }
 }

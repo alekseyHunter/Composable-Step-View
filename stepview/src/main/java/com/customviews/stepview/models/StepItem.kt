@@ -1,6 +1,7 @@
 package com.customviews.stepview.models
 
 import androidx.annotation.DrawableRes
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 
 data class StepItem(
@@ -41,3 +42,8 @@ sealed class StepIndicator(
         override val borderColor: Color = Color.Unspecified
     ) : StepIndicator(contentColor, backgroundColor, lineColor, borderColor)
 }
+
+data class StepMark(
+    val value: String,
+    val alignment: Alignment.Vertical
+)

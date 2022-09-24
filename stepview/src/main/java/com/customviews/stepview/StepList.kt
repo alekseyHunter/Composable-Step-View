@@ -145,10 +145,11 @@ private fun StepItem(
                 }
             }
 
+
             Row(
                 modifier = Modifier.weight(1f),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
                     text = item.name,
@@ -156,10 +157,11 @@ private fun StepItem(
                     color = colors.titleColor().value,
                     modifier = Modifier.wrapContentWidth()
                 )
+
                 if (item.subSteps.isNotEmpty()) {
                     Box(
                         modifier = Modifier
-                            .size(20.dp)
+                            .requiredSize(20.dp)
                             .background(Color.Gray.copy(0.05f), RoundedCornerShape(100))
                             .clip(RoundedCornerShape(100))
                             .clickable {
@@ -171,7 +173,7 @@ private fun StepItem(
                             painter = painterResource(id = R.drawable.ic_arrow_down),
                             contentDescription = "",
                             modifier = Modifier
-                                .size(18.dp)
+                                .requiredSize(18.dp)
                                 .rotate(angle),
                             tint = Color.Black.copy(0.7f)
                         )
@@ -179,7 +181,7 @@ private fun StepItem(
                 }
             }
 
-            if (!isExpanded) {
+            if (item.subSteps.isEmpty()) {
                 Text(
                     text = item.mark,
                     style = itemMarkStyle,
@@ -304,19 +306,37 @@ private fun StepItem(
                             color = colors.descriptionColor().value,
                             modifier = Modifier.weight(1f),
                         )
+
+                        Text(
+                            text = item.mark,
+                            style = itemMarkStyle,
+                            color = colors.markColor().value,
+                            modifier = Modifier.padding(horizontal = 16.dp)
+                        )
                     } else {
                         Text(
                             text = item.description,
                             style = itemDescriptionStyle,
-                            modifier = Modifier.padding(start = 48.dp, top = 4.dp, bottom = 4.dp),
+                            modifier = Modifier
+                                .padding(start = 48.dp, top = 4.dp, bottom = 4.dp)
+                                .weight(1f),
                             color = colors.descriptionColor().value,
                         )
+
+                        if(item.subSteps.isNotEmpty()) {
+                            Text(
+                                text = item.mark,
+                                style = itemMarkStyle,
+                                color = colors.markColor().value,
+                                modifier = Modifier.padding(horizontal = 16.dp)
+                            )
+                        }
                     }
                 }
             }
         }
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(12.dp))
     }
 }
 
@@ -423,17 +443,17 @@ object StepListDefault {
 
     @Composable
     fun stepListColors(
-        contentTitleColor: Color = Color.Black,
-        contentDescriptionColor: Color = Color.Black,
-        contentMarkColor: Color = Color.Black,
+        titleColor: Color = Color.Black,
+        descriptionColor: Color = Color.Gray,
+        markColor: Color = Color.Gray,
         stepIndicatorColor: Color = Color.Black,
         stepIndicatorBackgroundColor: Color = Color.Black.changeLightness(0.9f),
         stepIndicatorLineColor: Color = Color.Black,
         stepIndicatorBorderColor: Color = Color.White
     ): StepListColors = DefaultStepListColors(
-        titleColor = contentTitleColor,
-        descriptionColor = contentDescriptionColor,
-        markColor = contentMarkColor,
+        titleColor = titleColor,
+        descriptionColor = descriptionColor,
+        markColor = markColor,
         stepIndicatorColor = stepIndicatorColor,
         stepIndicatorBackgroundColor = stepIndicatorBackgroundColor,
         stepIndicatorLineColor = stepIndicatorLineColor,
