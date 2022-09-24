@@ -49,7 +49,7 @@ fun List() {
             .fillMaxSize()
             .background(Color.White)
     ) {
-        StepList(
+        /*StepList(
             Modifier,
             listOf(
                 StepItem(
@@ -106,15 +106,15 @@ fun List() {
             itemTitleStyle = TextStyle.Default,
             itemDescriptionStyle = TextStyle(fontSize = 12.sp),
             itemMarkStyle = TextStyle(fontSize = 12.sp)
-        )
-/*
+        )*/
+
         StepList(
             Modifier,
             listOf(
                 StepItem(
                     0,
-                    "Создан",
-                    "Санкт-Петербург",
+                    "Created",
+                    "CHINA",
                     "13.03.2022",
                     StepIndicator.Number(
                         "0",
@@ -122,13 +122,13 @@ fun List() {
                         Color(0xFFCDBC54).changeLightness(0.9f),
                         Color(0xFFCDBC54)
                     ),
-                    false,
+                    true,
                     emptyList()
                 ),
                 StepItem(
                     0,
-                    "В пути",
-                    "Екатеренбург / Отправлен в пункт выдачи",
+                    "Out for delivery",
+                    "CHINA / Arrived at the Post office",
                     "14.03.2022",
                     StepIndicator.Number(
                         "1",
@@ -136,21 +136,21 @@ fun List() {
                         Color(0xFFCB9B5B).changeLightness(0.9f),
                         Color(0xFFCB9B5B)
                     ),
-                    false,
+                    true,
                     listOf(
-                        SubStepItem("Санкт-Петербург", "Принят на доставку", "13.03.2022"),
+                        SubStepItem("Shatian Town", "Ready for dispatch", "13.03.2022"),
                         SubStepItem(
-                            "Санкт-Петербург",
-                            "Отправлен в г. Екатеренбург",
+                            "Shatian Town",
+                            "Outbound in sorting center",
                             "13.03.2022"
                         ),
-                        SubStepItem("Екатеренбург", "Отправлен в пункт выдачи", "14.03.2022"),
-                    ),
+                        SubStepItem("CHINA", "Arrived at the Post office", "14.03.2022"),
+                    )
                 ),
                 StepItem(
                     0,
-                    "Готов к выдаче",
-                    "Челябинск / Поступил. Заберите заказ",
+                    "Available for pickup at the Post Office",
+                    "CHINA / Available for pickup at the Post Office",
                     "15.03.2022",
                     StepIndicator.Number(
                         "2",
@@ -158,13 +158,19 @@ fun List() {
                         Color(0xFF3B9681).changeLightness(0.9f),
                         Color(0xFF3B9681)
                     ),
-                    false,
-                    listOf(SubStepItem("Челябинск", "Поступил. Заберите заказ", "15.03.2022")),
+                    true,
+                    listOf(
+                        SubStepItem(
+                            "CHINA",
+                            "Available for pickup at the Post Office",
+                            "15.03.2022"
+                        )
+                    ),
                 ),
                 StepItem(
                     0,
-                    "Вручен",
-                    "Челябинск",
+                    "Delivered",
+                    "CHINA",
                     "15.03.2022",
                     StepIndicator.Number(
                         "3",
@@ -172,17 +178,13 @@ fun List() {
                         Color(0xFF53926D).changeLightness(0.9f),
                         Color(0xFF53926D)
                     ),
-                    false,
-                    emptyList(),
+                    true,
+                    emptyList()
                 )
             ),
             itemTitleStyle = TextStyle.Default,
             itemDescriptionStyle = TextStyle(fontSize = 12.sp),
-            itemMarkStyle = TextStyle(fontSize = 12.sp),
-            colors = StepListDefault.stepListColors(
-                descriptionColor = Color.Gray,
-
-            )
-        )*/
+            itemMarkStyle = TextStyle(fontSize = 12.sp)
+        )
     }
 }

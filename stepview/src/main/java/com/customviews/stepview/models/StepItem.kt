@@ -42,8 +42,3 @@ sealed class StepIndicator(
         override val borderColor: Color = Color.Unspecified
     ) : StepIndicator(contentColor, backgroundColor, lineColor, borderColor)
 }
-
-data class StepMark(
-    val value: String,
-    val alignment: Alignment.Vertical
-)

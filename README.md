@@ -10,6 +10,8 @@
 
 <img src="docs/steplist/Basic.png" width="30%">
 
+<img src="docs/steplist/Custom.png" width="30%">
+
 ## Docs
 
 
