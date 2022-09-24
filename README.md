@@ -6,6 +6,14 @@
 2. Add `implementation 'com.github.alekseyHunter:customviews:0.0.3'` to your dependencies.
 3. Add `StepList` into your Composable-function.
 
+## Examples
+
+![Basic color scheme](docs/steplist/Basic.png)
+
+## Docs
+
+
+
 ## License
 
     Copyright 2022 Aleksey Okhotnichenko.

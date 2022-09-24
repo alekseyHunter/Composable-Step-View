@@ -100,6 +100,10 @@ private fun StepItem(
         colors.stepIndicatorColor().value
     }
 
+    val indicatorBorderColor = item.indicator.borderColor.takeOrElse {
+        colors.stepIndicatorBorderColor().value
+    }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -115,7 +119,7 @@ private fun StepItem(
                 modifier = Modifier
                     .padding(horizontal = 8.dp, vertical = 4.dp)
                     .size(24.dp)
-                    .border(2.dp, Color.White, RoundedCornerShape(100))
+                    .border(2.dp, indicatorBorderColor, RoundedCornerShape(100))
                     .background(
                         indicatorBackgroundColor, RoundedCornerShape(100)
                     )
@@ -149,7 +153,8 @@ private fun StepItem(
                 Text(
                     text = item.name,
                     style = itemTitleStyle,
-                    color = colors.titleColor().value
+                    color = colors.titleColor().value,
+                    modifier = Modifier.wrapContentWidth()
                 )
                 if (item.subSteps.isNotEmpty()) {
                     Box(
@@ -231,22 +236,26 @@ private fun StepItem(
                                         Box(
                                             modifier = Modifier
                                                 .size(10.dp)
-                                                .border(2.dp, Color.White, RoundedCornerShape(100))
                                                 .background(
                                                     indicatorContentColor,
+                                                    RoundedCornerShape(100)
+                                                )
+                                                .border(
+                                                    2.dp,
+                                                    indicatorBorderColor,
                                                     RoundedCornerShape(100)
                                                 )
                                         )
                                     }
                                     Text(
-                                        text = item.description,
+                                        text = it.description,
                                         style = itemDescriptionStyle,
                                         color = colors.descriptionColor().value,
                                         modifier = Modifier.weight(1f),
                                     )
                                 } else {
                                     Text(
-                                        text = item.description,
+                                        text = it.description,
                                         style = itemDescriptionStyle,
                                         modifier = Modifier.padding(
                                             start = 48.dp,
@@ -282,11 +291,11 @@ private fun StepItem(
                             Box(
                                 modifier = Modifier
                                     .size(10.dp)
-                                    .border(2.dp, Color.White, RoundedCornerShape(100))
                                     .background(
                                         indicatorContentColor,
                                         RoundedCornerShape(100)
                                     )
+                                    .border(2.dp, indicatorBorderColor, RoundedCornerShape(100))
                             )
                         }
                         Text(
@@ -331,6 +340,9 @@ interface StepListColors {
 
     @Composable
     fun stepIndicatorLineColor(): State<Color>
+
+    @Composable
+    fun stepIndicatorBorderColor(): State<Color>
 }
 
 @Immutable
@@ -340,7 +352,8 @@ private class DefaultStepListColors(
     private val markColor: Color,
     private val stepIndicatorColor: Color,
     private val stepIndicatorBackgroundColor: Color,
-    private val stepIndicatorLineColor: Color
+    private val stepIndicatorLineColor: Color,
+    private val stepIndicatorBorderColor: Color
 ) : StepListColors {
     @Composable
     override fun titleColor(): State<Color> {
@@ -372,6 +385,11 @@ private class DefaultStepListColors(
         return rememberUpdatedState(stepIndicatorLineColor)
     }
 
+    @Composable
+    override fun stepIndicatorBorderColor(): State<Color> {
+        return rememberUpdatedState(stepIndicatorBorderColor)
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || this::class != other::class) return false
@@ -384,6 +402,7 @@ private class DefaultStepListColors(
         if (stepIndicatorColor != other.stepIndicatorColor) return false
         if (stepIndicatorBackgroundColor != other.stepIndicatorBackgroundColor) return false
         if (stepIndicatorLineColor != other.stepIndicatorLineColor) return false
+        if (stepIndicatorBorderColor != other.stepIndicatorBorderColor) return false
 
         return true
     }
@@ -395,6 +414,7 @@ private class DefaultStepListColors(
         result = 31 * result + stepIndicatorColor.hashCode()
         result = 31 * result + stepIndicatorBackgroundColor.hashCode()
         result = 31 * result + stepIndicatorLineColor.hashCode()
+        result = 31 * result + stepIndicatorBorderColor.hashCode()
         return result
     }
 }
@@ -403,18 +423,20 @@ object StepListDefault {
 
     @Composable
     fun stepListColors(
-        contentTitleColor: Color = Color.Unspecified,
-        contentDescriptionColor: Color = Color.Unspecified,
-        contentMarkColor: Color = Color.Unspecified,
-        stepIndicatorColor: Color = Color.Unspecified,
-        stepIndicatorBackgroundColor: Color = Color.Unspecified.changeLightness(0.9f),
-        stepIndicatorLineColor: Color = Color.Black
+        contentTitleColor: Color = Color.Black,
+        contentDescriptionColor: Color = Color.Black,
+        contentMarkColor: Color = Color.Black,
+        stepIndicatorColor: Color = Color.Black,
+        stepIndicatorBackgroundColor: Color = Color.Black.changeLightness(0.9f),
+        stepIndicatorLineColor: Color = Color.Black,
+        stepIndicatorBorderColor: Color = Color.White
     ): StepListColors = DefaultStepListColors(
         titleColor = contentTitleColor,
         descriptionColor = contentDescriptionColor,
         markColor = contentMarkColor,
         stepIndicatorColor = stepIndicatorColor,
         stepIndicatorBackgroundColor = stepIndicatorBackgroundColor,
-        stepIndicatorLineColor = stepIndicatorLineColor
+        stepIndicatorLineColor = stepIndicatorLineColor,
+        stepIndicatorBorderColor = stepIndicatorBorderColor
     )
 }

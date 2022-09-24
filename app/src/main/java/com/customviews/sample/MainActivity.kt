@@ -20,7 +20,6 @@ import com.customviews.stepview.StepList
 import com.customviews.stepview.models.StepIndicator
 import com.customviews.stepview.models.StepItem
 import com.customviews.stepview.models.SubStepItem
-import com.customviews.stepview.utils.changeLightness
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,46 +51,52 @@ fun List() {
             listOf(
                 StepItem(
                     0,
-                    "Создан",
-                    "Санкт-Петербург",
+                    "Created",
+                    "CHINA",
                     "13.03.2022",
                     StepIndicator.Icon(R.drawable.ic_home_work),
-                    false,
+                    true,
                     emptyList()
                 ),
                 StepItem(
                     0,
-                    "В пути",
-                    "Екатеренбург / Отправлен в пункт выдачи",
+                    "Out for delivery",
+                    "CHINA / Arrived at the Post office",
                     "14.03.2022",
                     StepIndicator.Icon(R.drawable.ic_car),
-                    false,
+                    true,
                     listOf(
-                        SubStepItem("Санкт-Петербург", "Принят на доставку", "13.03.2022"),
+                        SubStepItem("Shatian Town", "Ready for dispatch", "13.03.2022"),
                         SubStepItem(
-                            "Санкт-Петербург",
-                            "Отправлен в г. Екатеренбург",
+                            "Shatian Town",
+                            "Outbound in sorting center",
                             "13.03.2022"
                         ),
-                        SubStepItem("Екатеренбург", "Отправлен в пункт выдачи", "14.03.2022"),
+                        SubStepItem("CHINA", "Arrived at the Post office", "14.03.2022"),
                     )
                 ),
                 StepItem(
                     0,
-                    "Готов к выдаче",
-                    "Челябинск / Поступил. Заберите заказ",
+                    "Available for pickup at the Post Office",
+                    "CHINA / Available for pickup at the Post Office",
                     "15.03.2022",
                     StepIndicator.Icon(R.drawable.ic_person),
-                    false,
-                    listOf(SubStepItem("Челябинск", "Поступил. Заберите заказ", "15.03.2022")),
+                    true,
+                    listOf(
+                        SubStepItem(
+                            "CHINA",
+                            "Available for pickup at the Post Office",
+                            "15.03.2022"
+                        )
+                    ),
                 ),
                 StepItem(
                     0,
-                    "Вручен",
-                    "Челябинск",
+                    "Delivered",
+                    "CHINA",
                     "15.03.2022",
                     StepIndicator.Icon(R.drawable.ic_home),
-                    false,
+                    true,
                     emptyList()
                 )
             ),
@@ -99,7 +104,7 @@ fun List() {
             itemDescriptionStyle = TextStyle(fontSize = 12.sp),
             itemMarkStyle = TextStyle(fontSize = 12.sp)
         )
-
+/*
         StepList(
             Modifier,
             listOf(
@@ -171,6 +176,6 @@ fun List() {
             itemTitleStyle = TextStyle.Default,
             itemDescriptionStyle = TextStyle(fontSize = 12.sp),
             itemMarkStyle = TextStyle(fontSize = 12.sp)
-        )
+        )*/
     }
 }

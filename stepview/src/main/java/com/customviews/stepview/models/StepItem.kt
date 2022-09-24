@@ -22,19 +22,22 @@ data class SubStepItem(
 sealed class StepIndicator(
     open val contentColor: Color,
     open val backgroundColor: Color,
-    open val lineColor: Color
+    open val lineColor: Color,
+    open val borderColor: Color
 ) {
     data class Number(
         val value: String,
         override val contentColor: Color = Color.Unspecified,
         override val backgroundColor: Color = Color.Unspecified,
-        override val lineColor: Color = Color.Unspecified
-    ) : StepIndicator(contentColor, backgroundColor, lineColor)
+        override val lineColor: Color = Color.Unspecified,
+        override val borderColor: Color = Color.Unspecified
+    ) : StepIndicator(contentColor, backgroundColor, lineColor, borderColor)
 
     data class Icon(
         @DrawableRes val icon: Int,
         override val contentColor: Color = Color.Unspecified,
         override val backgroundColor: Color = Color.Unspecified,
-        override val lineColor: Color = Color.Unspecified
-    ) : StepIndicator(contentColor, backgroundColor, lineColor)
+        override val lineColor: Color = Color.Unspecified,
+        override val borderColor: Color = Color.Unspecified
+    ) : StepIndicator(contentColor, backgroundColor, lineColor, borderColor)
 }
