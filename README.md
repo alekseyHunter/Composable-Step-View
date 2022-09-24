@@ -1,14 +1,12 @@
 # Composable custom views
 
 ## Usage
------
 
 1. Add `maven { url 'https://jitpack.io' }` to repositories block in your gradle file.
 2. Add `implementation 'com.github.alekseyHunter:customviews:0.0.3'` to your dependencies.
 3. Add `StepList` into your Composable-function.
 
 ## License
-=======
 
     Copyright 2022 Aleksey Okhotnichenko.
 
