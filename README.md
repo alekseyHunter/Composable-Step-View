@@ -8,7 +8,7 @@
 
 ## Examples
 
-<img src="docs/steplist/Basic.png" width="25%">
+<img src="docs/steplist/Basic.png" width="30%">
 
 ## Docs
 
