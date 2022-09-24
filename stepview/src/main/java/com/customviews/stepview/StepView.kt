@@ -22,7 +22,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import com.customviews.sample.R
 import com.customviews.stepview.models.StepItem
 import com.customviews.stepview.models.StepItemType
 import com.customviews.stepview.utils.changeLightness
