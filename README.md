@@ -10,6 +10,8 @@
 
 ![Basic color scheme](docs/steplist/Basic.png | width=25)
 
+<img src="docs/steplist/Basic.png" width="25%">
+
 ## Docs
 
 
