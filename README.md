@@ -1,11 +1,5 @@
 # Composable custom views
 
-## Usage
-
-1. Add `maven { url 'https://jitpack.io' }` to repositories block in your gradle file.
-2. Add `implementation 'com.github.alekseyHunter:customviews:0.0.3'` to your dependencies.
-3. Add `StepList` into your Composable-function.
-
 ## Examples
 
 <table>
@@ -17,7 +11,7 @@
  </tr>
 </table>
 
-## Docs
+## Usage
 
 ``` kotlin
 StepList(
@@ -57,6 +51,18 @@ StepList(
 ```
 
 For examples, refer to the [samples](https://github.com/alekseyHunter/customviews/blob/dev_0/app/src/main/java/com/customviews/sample/MainActivity.kt).
+
+## Download
+
+```groovy
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation "com.github.alekseyHunter:customviews:<version>"
+}
+```
 
 ## License
 
