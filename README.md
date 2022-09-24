@@ -8,7 +8,7 @@
 
 ## Examples
 
-![Basic color scheme](docs/steplist/Basic.png | width=256)
+![Basic color scheme](docs/steplist/Basic.png | width=25)
 
 ## Docs
 
