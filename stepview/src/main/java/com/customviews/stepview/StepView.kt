@@ -27,6 +27,14 @@ import com.customviews.stepview.models.StepItem
 import com.customviews.stepview.models.StepItemType
 import com.customviews.stepview.utils.changeLightness
 
+/**
+ * View showing step list
+ * @param modifier Modifier
+ * @param itemList list of items
+ * @param itemTitleStyle text style for title of item
+ * @param itemDescriptionStyle text style for description of item
+ * */
+
 @Composable
 fun StepView(
     modifier: Modifier = Modifier,
