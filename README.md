@@ -20,40 +20,39 @@
 ## Docs
 
 ``` kotlin
-StepList(
-            Modifier,
-            listOf(
-                StepItem(
-                    0,
-                    "Created",
-                    "CHINA",
-                    "13.03.2022",
-                    StepIndicator.Icon(R.drawable.ic_home_work),
-                    true,
-                    emptyList()
-                ),
-                StepItem(
-                    1,
-                    "Out for delivery",
-                    "CHINA / Arrived at the Post office",
-                    "14.03.2022",
-                    StepIndicator.Icon(R.drawable.ic_car),
-                    true,
-                    listOf(
-                        SubStepItem("Shatian Town", "Ready for dispatch", "13.03.2022"),
-                        SubStepItem(
-                            "Shatian Town",
-                            "Outbound in sorting center",
-                            "13.03.2022"
-                        ),
-                        SubStepItem("CHINA", "Arrived at the Post office", "14.03.2022"),
-                    )
+    StepList(
+        Modifier,
+        listOf(
+            StepItem(
+                0,
+                "Created",
+                "CHINA",
+                "13.03.2022",
+                StepIndicator.Icon(R.drawable.ic_home_work),
+                true,
+                emptyList()
+            ), StepItem(
+                1,
+                "Out for delivery",
+                "CHINA / Arrived at the Post office",
+                "14.03.2022",
+                StepIndicator.Icon(R.drawable.ic_car),
+                true,
+                listOf(
+                    SubStepItem("Shatian Town", "Ready for dispatch", "13.03.2022"),
+                    SubStepItem(
+                        "Shatian Town", "Outbound in sorting center", "13.03.2022"
+                    ),
+                    SubStepItem(
+                        "CHINA", "Arrived at the Post office", "14.03.2022"
+                    ),
                 )
-            ),
-            itemTitleStyle = TextStyle.Default,
-            itemDescriptionStyle = TextStyle(fontSize = 12.sp),
-            itemMarkStyle = TextStyle(fontSize = 12.sp)
-        )
+            )
+        ),
+        itemTitleStyle = TextStyle.Default,
+        itemDescriptionStyle = TextStyle(fontSize = 12.sp),
+        itemMarkStyle = TextStyle(fontSize = 12.sp)
+    )
 ```
 
 For examples, refer to the [samples](https://github.com/alekseyHunter/customviews/blob/dev_0/app/src/main/java/com/customviews/sample/MainActivity.kt).
