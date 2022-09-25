@@ -68,7 +68,8 @@ private fun BasicStepList() {
                 mark =  "13.03.2022",
                 indicator = StepIndicator.Icon(R.drawable.ic_home_work),
                 isVisibleSubStepIndicator = true,
-                subSteps = emptyList()
+                subSteps = emptyList(),
+                enabled = true
             ),
             StepItem(
                 id = 0,
@@ -85,7 +86,8 @@ private fun BasicStepList() {
                         "13.03.2022"
                     ),
                     SubStepItem("CHINA", "Arrived at the Post office", "14.03.2022"),
-                )
+                ),
+                enabled = true
             ),
             StepItem(
                 id = 0,
@@ -101,6 +103,7 @@ private fun BasicStepList() {
                         "15.03.2022"
                     )
                 ),
+                enabled = false
             ),
             StepItem(
                 id = 0,
@@ -109,7 +112,8 @@ private fun BasicStepList() {
                 mark = "15.03.2022",
                 indicator = StepIndicator.Icon(R.drawable.ic_home),
                 isVisibleSubStepIndicator = true,
-                subSteps = emptyList()
+                subSteps = emptyList(),
+                enabled = false
             )
         ),
         itemTitleStyle = TextStyle.Default,
@@ -136,7 +140,8 @@ private fun CustomStepList() {
                     lineColor = Color(0xFFCDBC54)
                 ),
                 isVisibleSubStepIndicator = true,
-                subSteps = emptyList()
+                subSteps = emptyList(),
+                enabled = true
             ),
             StepItem(
                 id = 0,
@@ -158,7 +163,8 @@ private fun CustomStepList() {
                         "13.03.2022"
                     ),
                     SubStepItem("CHINA", "Arrived at the Post office", "14.03.2022"),
-                )
+                ),
+                enabled = true
             ),
             StepItem(
                 id = 0,
@@ -179,6 +185,7 @@ private fun CustomStepList() {
                         "15.03.2022"
                     )
                 ),
+                enabled = false
             ),
             StepItem(
                 id = 0,
@@ -192,7 +199,8 @@ private fun CustomStepList() {
                     lineColor = Color(0xFF53926D)
                 ),
                 isVisibleSubStepIndicator = true,
-                subSteps = emptyList()
+                subSteps = emptyList(),
+                enabled = false
             )
         ),
         itemTitleStyle = TextStyle.Default,

@@ -35,13 +35,23 @@ fun StepList(
     itemDescriptionStyle: TextStyle,
     itemMarkStyle: TextStyle,
     colors: StepListColors = StepListDefault.stepListColors(),
-    scrollState: ScrollState = rememberScrollState()
+    scrollState: ScrollState = rememberScrollState(),
 ) {
+
     val itemHeightList = remember {
         MutableList(itemList.size) { 0 }.toMutableStateList()
     }
 
-    val stepIndicatorLineColor by colors.stepIndicatorLineColor()
+    val itemColorLineList = itemList.map { item ->
+        if (item.enabled)
+            item.indicator.lineColor.takeOrElse {
+                colors.stepIndicatorLineColor(true).value
+            }
+        else
+            item.indicator.disabledLineColor.takeOrElse {
+                colors.stepIndicatorLineColor(false).value
+            }
+    }
 
     Column(modifier = modifier
         .verticalScroll(scrollState)
@@ -51,7 +61,7 @@ fun StepList(
             itemHeightList.forEachIndexed { index, height ->
                 if (index != itemHeightList.lastIndex) {
                     val lineColor =
-                        itemList[index].indicator.lineColor.takeOrElse { stepIndicatorLineColor }
+                        itemColorLineList[index]
                     drawLine(
                         lineColor,
                         start = Offset(offsetX, previousOffsetY),
@@ -92,16 +102,23 @@ private fun StepItem(
 
     val angle: Float by animateFloatAsState(if (isExpanded) 180f else 0f)
 
-    val indicatorBackgroundColor = item.indicator.backgroundColor.takeOrElse {
-        colors.stepIndicatorBackgroundColor().value
+    val indicatorBackgroundColor = if (item.enabled) item.indicator.backgroundColor.takeOrElse {
+        colors.stepIndicatorBackgroundColor(item.enabled).value
+    } else item.indicator.disabledBackgroundColor.takeOrElse {
+        colors.stepIndicatorBackgroundColor(item.enabled).value
     }
 
-    val indicatorContentColor = item.indicator.contentColor.takeOrElse {
-        colors.stepIndicatorColor().value
+
+    val indicatorContentColor = if (item.enabled) item.indicator.contentColor.takeOrElse {
+        colors.stepIndicatorColor(item.enabled).value
+    } else item.indicator.disabledContentColor.takeOrElse {
+        colors.stepIndicatorColor(item.enabled).value
     }
 
-    val indicatorBorderColor = item.indicator.borderColor.takeOrElse {
-        colors.stepIndicatorBorderColor().value
+    val indicatorBorderColor = if (item.enabled) item.indicator.borderColor.takeOrElse {
+        colors.stepIndicatorBorderColor(item.enabled).value
+    } else item.indicator.disabledBorderColor.takeOrElse {
+        colors.stepIndicatorBorderColor(item.enabled).value
     }
 
     Column(
@@ -241,7 +258,11 @@ private fun StepItem(
                                                 indicatorContentColor,
                                                 RoundedCornerShape(100)
                                             )
-                                            .border(2.dp, indicatorBorderColor, RoundedCornerShape(100))
+                                            .border(
+                                                2.dp,
+                                                indicatorBorderColor,
+                                                RoundedCornerShape(100)
+                                            )
                                     )
 
                                     Text(
@@ -344,16 +365,16 @@ interface StepListColors {
     fun markColor(): State<Color>
 
     @Composable
-    fun stepIndicatorColor(): State<Color>
+    fun stepIndicatorColor(enabled: Boolean): State<Color>
 
     @Composable
-    fun stepIndicatorBackgroundColor(): State<Color>
+    fun stepIndicatorBackgroundColor(enabled: Boolean): State<Color>
 
     @Composable
-    fun stepIndicatorLineColor(): State<Color>
+    fun stepIndicatorLineColor(enabled: Boolean): State<Color>
 
     @Composable
-    fun stepIndicatorBorderColor(): State<Color>
+    fun stepIndicatorBorderColor(enabled: Boolean): State<Color>
 }
 
 @Immutable
@@ -364,7 +385,11 @@ private class DefaultStepListColors(
     private val stepIndicatorColor: Color,
     private val stepIndicatorBackgroundColor: Color,
     private val stepIndicatorLineColor: Color,
-    private val stepIndicatorBorderColor: Color
+    private val stepIndicatorBorderColor: Color,
+    private val disabledStepIndicatorColor: Color,
+    private val disabledStepIndicatorBackgroundColor: Color,
+    private val disabledStepIndicatorLineColor: Color,
+    private val disabledStepIndicatorBorderColor: Color
 ) : StepListColors {
     @Composable
     override fun titleColor(): State<Color> {
@@ -382,23 +407,23 @@ private class DefaultStepListColors(
     }
 
     @Composable
-    override fun stepIndicatorColor(): State<Color> {
-        return rememberUpdatedState(stepIndicatorColor)
+    override fun stepIndicatorColor(enabled: Boolean): State<Color> {
+        return rememberUpdatedState(if (enabled) stepIndicatorColor else disabledStepIndicatorColor)
     }
 
     @Composable
-    override fun stepIndicatorBackgroundColor(): State<Color> {
-        return rememberUpdatedState(stepIndicatorBackgroundColor)
+    override fun stepIndicatorBackgroundColor(enabled: Boolean): State<Color> {
+        return rememberUpdatedState(if (enabled) stepIndicatorBackgroundColor else disabledStepIndicatorBackgroundColor)
     }
 
     @Composable
-    override fun stepIndicatorLineColor(): State<Color> {
-        return rememberUpdatedState(stepIndicatorLineColor)
+    override fun stepIndicatorLineColor(enabled: Boolean): State<Color> {
+        return rememberUpdatedState(if (enabled) stepIndicatorLineColor else disabledStepIndicatorLineColor)
     }
 
     @Composable
-    override fun stepIndicatorBorderColor(): State<Color> {
-        return rememberUpdatedState(stepIndicatorBorderColor)
+    override fun stepIndicatorBorderColor(enabled: Boolean): State<Color> {
+        return rememberUpdatedState(if (enabled) stepIndicatorBorderColor else disabledStepIndicatorBorderColor)
     }
 
     override fun equals(other: Any?): Boolean {
@@ -414,6 +439,10 @@ private class DefaultStepListColors(
         if (stepIndicatorBackgroundColor != other.stepIndicatorBackgroundColor) return false
         if (stepIndicatorLineColor != other.stepIndicatorLineColor) return false
         if (stepIndicatorBorderColor != other.stepIndicatorBorderColor) return false
+        if (disabledStepIndicatorColor != other.disabledStepIndicatorColor) return false
+        if (disabledStepIndicatorBackgroundColor != other.disabledStepIndicatorBackgroundColor) return false
+        if (disabledStepIndicatorLineColor != other.disabledStepIndicatorLineColor) return false
+        if (disabledStepIndicatorBorderColor != other.disabledStepIndicatorBorderColor) return false
 
         return true
     }
@@ -426,6 +455,10 @@ private class DefaultStepListColors(
         result = 31 * result + stepIndicatorBackgroundColor.hashCode()
         result = 31 * result + stepIndicatorLineColor.hashCode()
         result = 31 * result + stepIndicatorBorderColor.hashCode()
+        result = 31 * result + disabledStepIndicatorColor.hashCode()
+        result = 31 * result + disabledStepIndicatorBackgroundColor.hashCode()
+        result = 31 * result + disabledStepIndicatorLineColor.hashCode()
+        result = 31 * result + disabledStepIndicatorBorderColor.hashCode()
         return result
     }
 }
@@ -440,7 +473,11 @@ object StepListDefault {
         stepIndicatorColor: Color = Color.Black,
         stepIndicatorBackgroundColor: Color = Color.Black.changeLightness(0.9f),
         stepIndicatorLineColor: Color = Color.Black,
-        stepIndicatorBorderColor: Color = Color.White
+        stepIndicatorBorderColor: Color = Color.White,
+        disabledStepIndicatorColor: Color = Color.Gray,
+        disabledStepIndicatorBackgroundColor: Color = Color.Gray.changeLightness(0.9f),
+        disabledStepIndicatorLineColor: Color = Color.Gray,
+        disabledStepIndicatorBorderColor: Color = Color.White
     ): StepListColors = DefaultStepListColors(
         titleColor = titleColor,
         descriptionColor = descriptionColor,
@@ -448,6 +485,10 @@ object StepListDefault {
         stepIndicatorColor = stepIndicatorColor,
         stepIndicatorBackgroundColor = stepIndicatorBackgroundColor,
         stepIndicatorLineColor = stepIndicatorLineColor,
-        stepIndicatorBorderColor = stepIndicatorBorderColor
+        stepIndicatorBorderColor = stepIndicatorBorderColor,
+        disabledStepIndicatorColor = disabledStepIndicatorColor,
+        disabledStepIndicatorBackgroundColor = disabledStepIndicatorBackgroundColor,
+        disabledStepIndicatorLineColor = disabledStepIndicatorLineColor,
+        disabledStepIndicatorBorderColor = disabledStepIndicatorBorderColor,
     )
 }

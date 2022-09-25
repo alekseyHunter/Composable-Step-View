@@ -25,7 +25,8 @@ StepList(
             mark = "13.03.2022",
             indicator = StepIndicator.Icon(R.drawable.ic_home_work),
             isVisibleSubStepIndicator = true,
-            subSteps = emptyList()
+            subSteps = emptyList(),
+            enabled = true
         ), 
         StepItem(
             id = 1,
@@ -50,7 +51,8 @@ StepList(
                     description = "Arrived at the Post office", 
                     mark = "14.03.2022"
                 ),
-            )
+            ),
+            enabled = true
         )
     ),
     itemTitleStyle = TextStyle.Default,
@@ -67,7 +69,11 @@ StepIndicator.Icon(
     contentColor = Color.Black,
     backgroundColor = Color.Black.changeLightness(0.9f),
     lineColor = Color.Black,
-    borderColor = Color.Black
+    borderColor = Color.White,
+    disabledContentColor = Color.Gray,
+    disabledBackgroundColor = Color.Gray.changeLightness(0.9f),
+    disabledLineColor= Color.Gray,
+    disabledBorderColor = Color.White
 )
 
 StepIndicator.Number(
@@ -75,7 +81,11 @@ StepIndicator.Number(
     contentColor = Color.Black,
     backgroundColor = Color.Black.changeLightness(0.9f),
     lineColor = Color.Black,
-    borderColor = Color.Black
+    borderColor = Color.White,
+    disabledContentColor = Color.Gray,
+    disabledBackgroundColor = Color.Gray.changeLightness(0.9f),
+    disabledLineColor= Color.Gray,
+    disabledBorderColor = Color.White
 )
 ```
 
@@ -91,7 +101,11 @@ StepList(
         stepIndicatorColor = Color.Black,
         stepIndicatorBackgroundColor = Color.Black.changeLightness(0.9f),
         stepIndicatorLineColor = Color.Black,
-        stepIndicatorBorderColor = Color.White
+        stepIndicatorBorderColor = Color.White,
+        disabledStepIndicatorColor = Color.Gray,
+        disabledStepIndicatorBackgroundColor = Color.Gray.changeLightness(0.9f),
+        disabledStepIndicatorLineColor = Color.Gray,
+        disabledStepIndicatorBorderColor = Color.White
     ),
     ...
 )
