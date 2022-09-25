@@ -15,25 +15,25 @@
 
 ``` kotlin
 StepList(
-    Modifier,
-    listOf(
+    modifier = Modifier,
+    itemList = listOf(
         StepItem(
-            0,
-            "Created",
-            "CHINA",
-            "13.03.2022",
-            StepIndicator.Icon(R.drawable.ic_home_work),
-            true,
-            emptyList()
+            id = 0,
+            name = "Created",
+            description = "CHINA",
+            mark = "13.03.2022",
+            indicator = StepIndicator.Icon(R.drawable.ic_home_work),
+            isVisibleSubStepIndicator = true,
+            subSteps = emptyList()
         ), 
         StepItem(
-            1,
-            "Out for delivery",
-            "CHINA / Arrived at the Post office",
-            14.03.2022",
-            StepIndicator.Icon(R.drawable.ic_car),
-            true,
-            listOf(
+            id = 1,
+            name = "Out for delivery",
+            description = "CHINA / Arrived at the Post office",
+            mark = "14.03.2022",
+            indicator = StepIndicator.Icon(R.drawable.ic_car),
+            isVisibleSubStepIndicator = true,
+            subSteps = listOf(
                 SubStepItem("Shatian Town", "Ready for dispatch", "13.03.2022"),
                 SubStepItem(
                      "Shatian Town", "Outbound in sorting center", "13.03.2022"
