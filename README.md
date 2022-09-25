@@ -12,6 +12,7 @@
 </table>
 
 ## Usage
+Simple step list:
 
 ``` kotlin
 StepList(
