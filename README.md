@@ -50,6 +50,44 @@ StepList(
 )
 ```
 
+Step indicator styling:
+
+``` kotlin
+StepIndicator.Icon(
+    icon = R.drawable.ic_car, 
+    contentColor = Color.Black,
+    backgroundColor = Color.Black.changeLightness(0.9f),
+    lineColor = Color.Black,
+    borderColor = Color.Black
+)
+
+StepIndicator.Number(
+    value = "1", 
+    contentColor = Color.Black,
+    backgroundColor = Color.Black.changeLightness(0.9f),
+    lineColor = Color.Black,
+    borderColor = Color.Black
+)
+```
+
+Color scheme styling:
+
+``` kotlin
+StepList(
+    ...
+    colors = StepListDefault.stepListColors(
+        titleColor = Color.Black,
+        descriptionColor = Color.Gray,
+        markColor = Color.Gray,
+        stepIndicatorColor = Color.Black,
+        stepIndicatorBackgroundColor = Color.Black.changeLightness(0.9f),
+        stepIndicatorLineColor = Color.Black,
+        stepIndicatorBorderColor = Color.White
+    ),
+    ...
+)
+```
+
 For examples, refer to the [samples](https://github.com/alekseyHunter/customviews/blob/dev_0/app/src/main/java/com/customviews/sample/MainActivity.kt).
 
 ## Download
