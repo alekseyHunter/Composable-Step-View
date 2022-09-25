@@ -34,12 +34,19 @@ StepList(
             indicator = StepIndicator.Icon(R.drawable.ic_car),
             isVisibleSubStepIndicator = true,
             subSteps = listOf(
-                SubStepItem("Shatian Town", "Ready for dispatch", "13.03.2022"),
                 SubStepItem(
-                     "Shatian Town", "Outbound in sorting center", "13.03.2022"
+                    name = "Shatian Town", 
+                    description = "Ready for dispatch", 
+                    mark = "13.03.2022"),
+                SubStepItem(
+                     name = "Shatian Town", 
+                     description = "Outbound in sorting center", 
+                     mark = "13.03.2022"
                 ),
                 SubStepItem(
-                    "CHINA", "Arrived at the Post office", "14.03.2022"
+                    name = "CHINA", 
+                    description = "Arrived at the Post office", 
+                    mark = "14.03.2022"
                 ),
             )
         )
