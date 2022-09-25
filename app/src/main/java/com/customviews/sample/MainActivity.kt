@@ -55,7 +55,7 @@ fun List() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun BasicStepList() {
     StepList(
@@ -89,7 +89,7 @@ private fun BasicStepList() {
             ),
             StepItem(
                 id = 0,
-                name = "Available for pickup at the Post Office",
+                name = "Available for pickup at the Post Office for pickup at the Post Office",
                 description = "CHINA / Available for pickup at the Post Office",
                 mark = "15.03.2022",
                 indicator = StepIndicator.Icon(R.drawable.ic_person),
@@ -118,7 +118,7 @@ private fun BasicStepList() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun CustomStepList() {
     StepList(

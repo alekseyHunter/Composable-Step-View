@@ -146,37 +146,41 @@ private fun StepItem(
             }
 
 
-            Row(
-                modifier = Modifier.weight(1f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Text(
-                    text = item.name,
-                    style = itemTitleStyle,
-                    color = colors.titleColor().value,
-                    modifier = Modifier.wrapContentWidth()
-                )
+            BoxWithConstraints(modifier = Modifier.weight(1f)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Text(
+                        text = item.name,
+                        style = itemTitleStyle,
+                        color = colors.titleColor().value,
+                        modifier = Modifier.widthIn(0.dp, this@BoxWithConstraints.maxWidth - 46.dp)
+                    )
 
-                if (item.subSteps.isNotEmpty()) {
-                    Box(
-                        modifier = Modifier
-                            .requiredSize(20.dp)
-                            .background(Color.Gray.copy(0.05f), RoundedCornerShape(100))
-                            .clip(RoundedCornerShape(100))
-                            .clickable {
-                                isExpanded = !isExpanded
-                            },
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_arrow_down),
-                            contentDescription = "",
+                    if (item.subSteps.isNotEmpty()) {
+                        Box(
                             modifier = Modifier
-                                .requiredSize(18.dp)
-                                .rotate(angle),
-                            tint = Color.Black.copy(0.7f)
-                        )
+                                .defaultMinSize(20.dp)
+                                .background(Color.Gray.copy(0.05f), RoundedCornerShape(100))
+                                .clip(RoundedCornerShape(100))
+                                .clickable {
+                                    isExpanded = !isExpanded
+                                },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_arrow_down),
+                                contentDescription = "",
+                                modifier = Modifier
+                                    .requiredSize(18.dp)
+                                    .rotate(angle),
+                                tint = Color.Black.copy(0.7f)
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.width(16.dp))
                     }
                 }
             }
@@ -231,24 +235,15 @@ private fun StepItem(
                                 if (item.subSteps.isNotEmpty() && item.isVisibleSubStepIndicator) {
                                     Box(
                                         modifier = Modifier
-                                            .padding(horizontal = 8.dp)
-                                            .size(24.dp),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Box(
-                                            modifier = Modifier
-                                                .size(10.dp)
-                                                .background(
-                                                    indicatorContentColor,
-                                                    RoundedCornerShape(100)
-                                                )
-                                                .border(
-                                                    2.dp,
-                                                    indicatorBorderColor,
-                                                    RoundedCornerShape(100)
-                                                )
-                                        )
-                                    }
+                                            .padding(horizontal = 14.dp)
+                                            .size(10.dp)
+                                            .background(
+                                                indicatorContentColor,
+                                                RoundedCornerShape(100)
+                                            )
+                                            .border(2.dp, indicatorBorderColor, RoundedCornerShape(100))
+                                    )
+
                                     Text(
                                         text = it.description,
                                         style = itemDescriptionStyle,
@@ -280,26 +275,22 @@ private fun StepItem(
                 }
             } else {
                 Row(
+                    modifier = Modifier.padding(top = 4.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     if (item.subSteps.isNotEmpty() && item.isVisibleSubStepIndicator) {
                         Box(
                             modifier = Modifier
-                                .padding(horizontal = 8.dp)
-                                .size(24.dp),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .size(10.dp)
-                                    .background(
-                                        indicatorContentColor,
-                                        RoundedCornerShape(100)
-                                    )
-                                    .border(2.dp, indicatorBorderColor, RoundedCornerShape(100))
-                            )
-                        }
+                                .padding(horizontal = 14.dp)
+                                .size(10.dp)
+                                .background(
+                                    indicatorContentColor,
+                                    RoundedCornerShape(100)
+                                )
+                                .border(2.dp, indicatorBorderColor, RoundedCornerShape(100))
+                        )
+
                         Text(
                             text = item.description,
                             style = itemDescriptionStyle,
@@ -318,12 +309,12 @@ private fun StepItem(
                             text = item.description,
                             style = itemDescriptionStyle,
                             modifier = Modifier
-                                .padding(start = 48.dp, top = 4.dp, bottom = 4.dp)
+                                .padding(start = 48.dp)
                                 .weight(1f),
                             color = colors.descriptionColor().value,
                         )
 
-                        if(item.subSteps.isNotEmpty()) {
+                        if (item.subSteps.isNotEmpty()) {
                             Text(
                                 text = item.mark,
                                 style = itemMarkStyle,
