@@ -38,7 +38,8 @@ StepList(
                 SubStepItem(
                     name = "Shatian Town", 
                     description = "Ready for dispatch", 
-                    mark = "13.03.2022"),
+                    mark = "13.03.2022"
+                ),
                 SubStepItem(
                      name = "Shatian Town", 
                      description = "Outbound in sorting center", 
