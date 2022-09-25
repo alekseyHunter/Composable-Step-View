@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.sp
 import com.customviews.app.R
 import com.customviews.sample.ui.theme.CustomViewsTheme
 import com.customviews.stepview.StepList
-import com.customviews.stepview.StepListColors
 import com.customviews.stepview.StepListDefault
 import com.customviews.stepview.models.StepIndicator
 import com.customviews.stepview.models.StepItem
@@ -49,142 +48,156 @@ fun List() {
             .fillMaxSize()
             .background(Color.White)
     ) {
-        /*StepList(
-            Modifier,
-            listOf(
-                StepItem(
-                    0,
-                    "Created",
-                    "CHINA",
-                    "13.03.2022",
-                    StepIndicator.Icon(R.drawable.ic_home_work),
-                    true,
-                    emptyList()
-                ),
-                StepItem(
-                    0,
-                    "Out for delivery",
-                    "CHINA / Arrived at the Post office",
-                    "14.03.2022",
-                    StepIndicator.Icon(R.drawable.ic_car),
-                    true,
-                    listOf(
-                        SubStepItem("Shatian Town", "Ready for dispatch", "13.03.2022"),
-                        SubStepItem(
-                            "Shatian Town",
-                            "Outbound in sorting center",
-                            "13.03.2022"
-                        ),
-                        SubStepItem("CHINA", "Arrived at the Post office", "14.03.2022"),
-                    )
-                ),
-                StepItem(
-                    0,
-                    "Available for pickup at the Post Office",
-                    "CHINA / Available for pickup at the Post Office",
-                    "15.03.2022",
-                    StepIndicator.Icon(R.drawable.ic_person),
-                    true,
-                    listOf(
-                        SubStepItem(
-                            "CHINA",
-                            "Available for pickup at the Post Office",
-                            "15.03.2022"
-                        )
-                    ),
-                ),
-                StepItem(
-                    0,
-                    "Delivered",
-                    "CHINA",
-                    "15.03.2022",
-                    StepIndicator.Icon(R.drawable.ic_home),
-                    true,
-                    emptyList()
-                )
-            ),
-            itemTitleStyle = TextStyle.Default,
-            itemDescriptionStyle = TextStyle(fontSize = 12.sp),
-            itemMarkStyle = TextStyle(fontSize = 12.sp)
-        )*/
 
-        StepList(
-            Modifier,
-            listOf(
-                StepItem(
-                    0,
-                    "Created",
-                    "CHINA",
-                    "13.03.2022",
-                    StepIndicator.Number(
-                        "0",
-                        Color(0xFFCDBC54),
-                        Color(0xFFCDBC54).changeLightness(0.9f),
-                        Color(0xFFCDBC54)
+        BasicStepList()
+
+        CustomStepList()
+    }
+}
+
+@Preview
+@Composable
+private fun BasicStepList() {
+    StepList(
+        modifier = Modifier,
+        itemList = listOf(
+            StepItem(
+                id =  0,
+                name = "Created",
+                description = "CHINA",
+                mark =  "13.03.2022",
+                indicator = StepIndicator.Icon(R.drawable.ic_home_work),
+                isVisibleSubStepIndicator = true,
+                subSteps = emptyList()
+            ),
+            StepItem(
+                id = 0,
+                name = "Out for delivery",
+                description = "CHINA / Arrived at the Post office",
+                mark = "14.03.2022",
+                indicator = StepIndicator.Icon(R.drawable.ic_car),
+                isVisibleSubStepIndicator = true,
+                subSteps = listOf(
+                    SubStepItem("Shatian Town", "Ready for dispatch", "13.03.2022"),
+                    SubStepItem(
+                        "Shatian Town",
+                        "Outbound in sorting center",
+                        "13.03.2022"
                     ),
-                    true,
-                    emptyList()
-                ),
-                StepItem(
-                    0,
-                    "Out for delivery",
-                    "CHINA / Arrived at the Post office",
-                    "14.03.2022",
-                    StepIndicator.Number(
-                        "1",
-                        Color(0xFFCB9B5B),
-                        Color(0xFFCB9B5B).changeLightness(0.9f),
-                        Color(0xFFCB9B5B)
-                    ),
-                    true,
-                    listOf(
-                        SubStepItem("Shatian Town", "Ready for dispatch", "13.03.2022"),
-                        SubStepItem(
-                            "Shatian Town",
-                            "Outbound in sorting center",
-                            "13.03.2022"
-                        ),
-                        SubStepItem("CHINA", "Arrived at the Post office", "14.03.2022"),
-                    )
-                ),
-                StepItem(
-                    0,
-                    "Available for pickup at the Post Office",
-                    "CHINA / Available for pickup at the Post Office",
-                    "15.03.2022",
-                    StepIndicator.Number(
-                        "2",
-                        Color(0xFF3B9681),
-                        Color(0xFF3B9681).changeLightness(0.9f),
-                        Color(0xFF3B9681)
-                    ),
-                    true,
-                    listOf(
-                        SubStepItem(
-                            "CHINA",
-                            "Available for pickup at the Post Office",
-                            "15.03.2022"
-                        )
-                    ),
-                ),
-                StepItem(
-                    0,
-                    "Delivered",
-                    "CHINA",
-                    "15.03.2022",
-                    StepIndicator.Number(
-                        "3",
-                        Color(0xFF53926D),
-                        Color(0xFF53926D).changeLightness(0.9f),
-                        Color(0xFF53926D)
-                    ),
-                    true,
-                    emptyList()
+                    SubStepItem("CHINA", "Arrived at the Post office", "14.03.2022"),
                 )
             ),
-            itemTitleStyle = TextStyle.Default,
-            itemDescriptionStyle = TextStyle(fontSize = 12.sp),
-            itemMarkStyle = TextStyle(fontSize = 12.sp)
-        )
-    }
+            StepItem(
+                id = 0,
+                name = "Available for pickup at the Post Office",
+                description = "CHINA / Available for pickup at the Post Office",
+                mark = "15.03.2022",
+                indicator = StepIndicator.Icon(R.drawable.ic_person),
+                isVisibleSubStepIndicator = true,
+                subSteps = listOf(
+                    SubStepItem(
+                        "CHINA",
+                        "Available for pickup at the Post Office",
+                        "15.03.2022"
+                    )
+                ),
+            ),
+            StepItem(
+                id = 0,
+                name = "Delivered",
+                description = "CHINA",
+                mark = "15.03.2022",
+                indicator = StepIndicator.Icon(R.drawable.ic_home),
+                isVisibleSubStepIndicator = true,
+                subSteps = emptyList()
+            )
+        ),
+        itemTitleStyle = TextStyle.Default,
+        itemDescriptionStyle = TextStyle(fontSize = 12.sp),
+        itemMarkStyle = TextStyle(fontSize = 12.sp)
+    )
+}
+
+@Preview
+@Composable
+private fun CustomStepList() {
+    StepList(
+        modifier = Modifier,
+        itemList = listOf(
+            StepItem(
+                id = 0,
+                name = "Created",
+                description = "CHINA",
+                mark = "13.03.2022",
+                indicator = StepIndicator.Number(
+                    value = "0",
+                    contentColor = Color(0xFFCDBC54),
+                    backgroundColor = Color(0xFFCDBC54).changeLightness(0.9f),
+                    lineColor = Color(0xFFCDBC54)
+                ),
+                isVisibleSubStepIndicator = true,
+                subSteps = emptyList()
+            ),
+            StepItem(
+                id = 0,
+                name = "Out for delivery",
+                description = "CHINA / Arrived at the Post office",
+                mark = "14.03.2022",
+                indicator = StepIndicator.Number(
+                    value = "1",
+                    contentColor = Color(0xFFCB9B5B),
+                    backgroundColor = Color(0xFFCB9B5B).changeLightness(0.9f),
+                    lineColor = Color(0xFFCB9B5B)
+                ),
+                isVisibleSubStepIndicator = true,
+                subSteps = listOf(
+                    SubStepItem("Shatian Town", "Ready for dispatch", "13.03.2022"),
+                    SubStepItem(
+                        "Shatian Town",
+                        "Outbound in sorting center",
+                        "13.03.2022"
+                    ),
+                    SubStepItem("CHINA", "Arrived at the Post office", "14.03.2022"),
+                )
+            ),
+            StepItem(
+                id = 0,
+                name = "Available for pickup at the Post Office",
+                description = "CHINA / Available for pickup at the Post Office",
+                mark = "15.03.2022",
+                indicator = StepIndicator.Number(
+                    value = "2",
+                    contentColor = Color(0xFF3B9681),
+                    backgroundColor = Color(0xFF3B9681).changeLightness(0.9f),
+                    lineColor = Color(0xFF3B9681)
+                ),
+                isVisibleSubStepIndicator = true,
+                subSteps = listOf(
+                    SubStepItem(
+                        "CHINA",
+                        "Available for pickup at the Post Office",
+                        "15.03.2022"
+                    )
+                ),
+            ),
+            StepItem(
+                id = 0,
+                name = "Delivered",
+                description = "CHINA",
+                mark = "15.03.2022",
+                indicator = StepIndicator.Number(
+                    value = "3",
+                    contentColor = Color(0xFF53926D),
+                    backgroundColor = Color(0xFF53926D).changeLightness(0.9f),
+                    lineColor = Color(0xFF53926D)
+                ),
+                isVisibleSubStepIndicator = true,
+                subSteps = emptyList()
+            )
+        ),
+        itemTitleStyle = TextStyle.Default,
+        itemDescriptionStyle = TextStyle(fontSize = 12.sp),
+        itemMarkStyle = TextStyle(fontSize = 12.sp),
+        colors = StepListDefault.stepListColors()
+    )
 }
